@@ -1,3 +1,6 @@
+import 'package:amazon_clone/constants/global_variables.dart';
+import 'package:amazon_clone/features/auth/screens/auth_screen.dart';
+import 'package:amazon_clone/router.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,11 +13,43 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        colorScheme: const ColorScheme.light(
+          primary: GlobalVariables.secondaryColor
+        ),
+        scaffoldBackgroundColor: GlobalVariables.backgroundColor,
+        appBarTheme: const AppBarTheme(
+          elevation: 0,
+          iconTheme: IconThemeData(
+            color: Colors.black,
+          ),
+        ),
       ),
-      home: const Text('Flutter Demo Home Page'),
+      onGenerateRoute: (settings) => generateRoute(settings) ,
+      home:  Scaffold(
+        appBar: AppBar(
+          title: const Text('Hello'),
+        ),
+        body: Column(
+          children: <Widget> [
+            const Center(
+              child: Text("Flutter Demo Home Page"),
+            ),
+            Builder(
+              builder: (context) {
+                return ElevatedButton(
+                  onPressed: (){
+                    Navigator.pushNamed(context, AuthScreen.routeName);
+                  },
+                  child: const Text('Click'),
+                );
+              }
+            )
+          ],
+        ),
+      ),
     );
   }
 }
