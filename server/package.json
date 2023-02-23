@@ -9,6 +9,7 @@
   "author": "0xharkirat (Harkirat Singh)",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "http": "^0.0.1-security",
